@@ -7,9 +7,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaConsumer {
 
-    @KafkaListener(topics = "test1", groupId = "1")
-    public void listen(String message) {
-        System.out.println("Received Message in group my-group: " + message);
+
+    private final WebSocketService webSocketService;
+
+    public KafkaConsumer(WebSocketService webSocketService) {
+        this.webSocketService = webSocketService;
     }
+
+    //@KafkaListener(topics = "test1", groupId = "1")
+    public void consume(String message) {
+        // Forward the Kafka message to WebSocket clients
+        this.webSocketService.sendMessage(message);
+    }
+
 }
 
