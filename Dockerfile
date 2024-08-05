@@ -1,17 +1,23 @@
-# Stage 1: Build
-FROM maven:3.8.6-openjdk-21 AS build
+# Use Ubuntu as the base image for the build stage
+FROM ubuntu:latest AS build
+
+# Set the author label
+LABEL authors="khaled"
+
+# Update package lists and install OpenJDK and Maven
+RUN apt-get update && \
+    apt-get install -y openjdk-21-jdk maven
 
 # Set the working directory
 WORKDIR /realTime
 
-# Copy the Maven project files
-COPY pom.xml .
-COPY src ./src
+# Copy the entire project to the working directory
+COPY . .
 
 # Run Maven to clean and package the application
 RUN mvn clean package
 
-# Stage 2: Runtime
+# Use the OpenJDK base image for the runtime stage
 FROM openjdk:21-jdk
 
 # Expose the application port
