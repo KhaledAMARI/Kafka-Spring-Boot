@@ -4,8 +4,6 @@ FROM ubuntu:latest AS build
 # Set the author label
 LABEL authors="khaled"
 
-# Check docker setup
-RUN docker -v
 # Update package lists and install OpenJDK and Maven
 RUN apt-get update && \
     apt-get install -y openjdk-21-jdk maven
