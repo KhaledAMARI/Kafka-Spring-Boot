@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: realTime
+server:
+  port: 8080
+kafka:
+  topic: test1
+  group:
+      id: group1
