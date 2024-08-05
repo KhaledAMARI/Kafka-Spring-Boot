@@ -24,7 +24,7 @@ FROM openjdk:21-jdk
 EXPOSE 8080
 
 # Copy the built JAR file from the build stage
-COPY --from=build /realTime/target/realTime-0.0.1-SNAPSHOT.jar realTime-0.0.1-SNAPSHOT.jar
+COPY --from=build /realTime/target/dashboard-admin-realTime-0.0.1-SNAPSHOT.jar realTime-0.0.1-SNAPSHOT.jar
 
 # Set the entry point to run the JAR file
 ENTRYPOINT ["java", "-jar", "realTime-0.0.1-SNAPSHOT.jar"]
