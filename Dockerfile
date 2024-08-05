@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y openjdk-21-jdk maven
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /realTime
 
 # Copy the entire project to the working directory
 COPY . .
@@ -24,7 +24,7 @@ FROM openjdk:21-jdk
 EXPOSE 8080
 
 # Copy the built JAR file from the build stage
-COPY --from=build /app/target/realTime.jar app.jar
+COPY --from=build /app/target/realTime.jar realTime-0.0.1-SNAPSHOT.jar
 
 # Set the entry point to run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "realTime-0.0.1-SNAPSHOT.jar"]
