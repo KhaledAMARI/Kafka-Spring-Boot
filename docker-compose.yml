@@ -37,3 +37,12 @@ services:
       KAFKA_CLUSTERS_0_SCHEMAREGISTRY: "http://localhost:8081"
     depends_on:
       - kafka
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka

@@ -4,9 +4,6 @@ FROM ubuntu:latest AS build
 # Set the author label
 LABEL authors="khaled"
 
-# Create kafak containers
-RUN docker compose down && docker compose up -d
-
 # Update package lists and install OpenJDK and Maven
 RUN apt-get update && \
     apt-get install -y openjdk-21-jdk maven
